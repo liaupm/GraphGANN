@@ -1,0 +1,110 @@
+----------------------------------------* RANDOMNESS *------------------------------------
+//three different numbers for the three random seeds (do not repeat)
+seedData=6682541 //random seed for datasets (making val and test splits and generating random combinations of inputs) 
+seedIni=995469 //random seed for generating the initial population of nets
+seedRun=1456723 //random seed for running the GA
+
+
+---------------------------------------* NEURAL NET *---------------------------
+minActivation=0.0 //min value for node scales
+maxActivation=12.0 //max value for node scales
+
+functionType=satExponential //activation function for hidden nodes: {sigmoid, satExponential}. Output node is always sigmoid
+classThreshold=0.5 //threshold for binarizing real output
+
+
+---------------------------------------------* ENSEMBLES *---------------------------
+ensembleCriterion=lossW //quality metric used for selecting and weighting ensemble members: {none, loss, lossW, lossOutW, acc, accW, accOutW }
+ensembleThreshold=0.9 //quality threshold (ensembleCriterion) for including a net in the ensemble
+ensembleWeighted=0 //whether to weight member predictions by quality (ensembleCriterion) (1) or not (0)
+
+netIndex=0 //index of the first net (trained and saved or loaded depending on the program)
+netNum=3 //number of nets (trained and saved or loaded depending on the program)
+
+
+---------------------------------------* GENETIC ALGORITHM *------------------------
+//MMX crossover params
+a=-0.001 //-0.01  //negative and close to 0
+b=-0.133 //-0.05 //negative and bigger than a in abs
+c=0.54  //0.1 //0.2 //positive
+d=0.226  //0.4 //positive and smaller than 0.5
+
+crossNum=1 //number of crosses per generation. Do not change
+parentNum=7 //number of parents per cross. Do not change
+outspringNum=2 //number of children per cross. Do not change
+
+mutationProbWeights= 0.2 //prob of weight mutation per cross 
+mutationAmountWeights=0.1 //max amount of weight change due to mutation per cross. Min = 0.0
+mutationProbActivation=0.05 //prob of scale mutation per cross 
+mutationAmountScales=0.1 //max amount of scale change due to mutation per cross. Min = 0.0
+
+mixFraction=0.8 //fraction of population exchanged in multi population migration events
+
+
+-------------------------------------* AMOUNT OF TRAINING *--------------------------
+popSize=20 //size of each net population
+gaNum=10 //number of populations in the multiGA
+generationNum=10 //number of GA generations between migration events
+mixNum=300 //number of migration events. Total generations = mixNum * generationNum
+
+
+-------------------------------------* INSTANCE WEIGHTING *--------------------------
+instanceWeightByOutput=0.5 //weight given to cases with output = 0. Cases with output = 1 are given 1 - instanceWeightByOutput. Must be in [0,1]. For cost-sensitive classification or class balancing
+instanceWeightByInput=0.0 //exponent of exponential decay of instance weigth with number of 0 inputs (for cases where instances with less 0 inputs are more informative)
+simWeight=0 //whether to weight the instances by similarity (train set: between them, val set: related to the train set). For offsetting very similar instances in the dataset
+
+
+-------------------------------------* K-FOLD AND EVALUATION *--------------------------
+k = 10 //number of cross-validation folds (for making fair test splits or val splits when adjusting hyperparameters)
+validationInstanceNum=10 //number of instances for validation set (early stopping)
+
+bestNetCriterion=lossW //metric used for selecting the best net (in val set)
+requiredValQuality=0.3 //threshold (bestNetCriterion) required for accepting a net as ok after training
+generationsRequired=100 //min number of training generations. The selected net (best in val set) have to belong to a later generation to ensure true learning and not by chance
+valMaxTrials=5 //max trials when training a net (point: some trainings may lead to bad results and must be discarded)
+
+
+-------------------------------------* PREDICTION *--------------------------
+zerosNum=5 //number of 0 inputs in input combinations for prediction
+predictionPrintThresholdL=0.0 //lower predicted output threshold for printing a case in the predictions results. Filter to avoid too heavy results files
+predictionPrintThresholdU=0.8 //upper predicted output threshold for printing a case in the predictions results. Filter to avoid too heavy results files
+combisFilterMode=2 //filter to apply when making all input combinations for prediction (related to the main loaded dataset). 0 = no filter, 1 = remove repeated, 2 = remove supersetsof instances with given output
+combisFilterInput=0 //if filter mode = 2, instance value to use for determining that one instance is a superset of another one
+combisFilterClass=0 //if filter mode = 2, output value to remove
+
+
+-------------------------------------* CRAZY *------------------------------------
+crazy=0 //whether to perform a random swap of input nodes to test the impact of net structure 
+crazySeed=95317 //random seed for random swap of input nodes
+make_ff=0 //whether to convert the hidden part of the net into fully-connected feed-forward to test the impact of net structure. Up to 3 hidden layers
+ff_hidden0=4 //number of nodes(neurons) in hidden layer 0 if make_ff
+ff_hidden1=2 //number of nodes(neurons) in hidden layer 1 if make_ff
+ff_hidden2=0 //number of nodes(neurons) in hidden layer 2 if make_ff
+ff_hidden3=0 //number of nodes(neurons) in hidden layer 3 if make_ff
+
+
+
+-------------------------------------* OPTIONS *------------------------------------
+saveHistorical=0 //whether to save the historical change in train and val metrics during training
+saveBestNet=1 //whether to save the structure, param value and metrics of the best nets
+savePredictions=1 //whether to save (val and test) predictions of the best nets
+
+datasetIndex=0 //in the case of having performed a dataset split before, index of the fold to use. -1 = use whole dataset
+program=2 //program to run
+
+
+//programs:
+//---training
+//0: train only weighted instances val only: trains one net usign a validation fraction for early termination and the rest of the dataset for training
+//1: k-Fold weighted instances val only: makes stratified k-fold with the whole dataset using the test part for validation (early termination)
+//2: k-Fold weighted instances val + auto fair test: same as progKFold but previously separating a fraction for fair test. This fraction is used for nothing but printing its metrics
+//3: k-Fold val + auto fair test with ensemble: train nets and evaluate avg individual vs ensemble performance in fair test set k times by performing a k-fold
+//4: train and save nets for ensemble
+
+//---prediction and evaluation without training: train n nets by progTrainOnly and save them for future ensemble
+//5: evaluate ensemble: load previously trained net and evaluate avg individual vs ensemble performance in fair test set
+//6: use saved ensemble for prediction: uses nets saved in progTrainAndSaveNets in a weighted ensemble and the dataset generated with progMakeInputCombinations to predict the dataset outputs
+
+//---dataset 
+//7: split dataset by k-fold and save splits: save train and test dataset splits following a k-fold
+//8: generate input combinations for prediction: save a dataset with all the posible input combinations and same output. For prediction in a future run
