@@ -18,11 +18,14 @@ Even though fully-connected networks can be trained, the software is aimed at cu
 
 The current version (1.0) is a prototype under-development that has been designed for a specific dataset of the Biology field. Consequently, it does not provide a big range of options and functionalities but the ones that were required. However, it can be easily extended.
 
+The expected usage is for research in the topic. It provides a starting point for developing non-conventional deep learning and not an alternative to the existing deep learning libraries. The code is prepared for extension to several sets of weights per neuron and polynomials of order n.
+
 It is not currently optimized nor parallelized.
 
 
-
 ## How to use ##
+
+
 
 
 ## Contact ##
