@@ -1,5 +1,28 @@
 # GraphGANN #
+
 Artificial neural networks with a meaningful graph as structure trained by a genetic algorithm.
+
 Developed by Elena Núñez Berrueco during the PhD at LIA-UPM.
+
 Under GNU GPL v3.0 license
 
+
+## Description ##
+
+Software for training, using for prediction and evaluating artificial neural networks (ANN). The training is performed by means of a real-coded steady-state multipopulation genetic algoritm. The current version uses roulette selection of parents, MMX crossover, stochastic mutation and deterministic replacement of the worst networks.
+
+Even though fully-connected networks can be trained, the software is aimed at custom structures not restricted to layers (they could be understood as very sparse nets with many skip connections). If meaningful graphs (known relationships) are used as the structure, the nets turn into 'white box' classifiers. At the same time, deep nets with very few connections can be obtained by this knowledge-directed sparsity. This approach can be useful for training with very small datasets. 
+
+
+## Current state ##
+
+
+
+This software is
+
+
+## How to use ##
+
+
+## Contact ##
+elena.nunez@upm.es
