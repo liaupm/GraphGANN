@@ -16,9 +16,10 @@ Even though fully-connected networks can be trained, the software is aimed at cu
 
 ## Current state ##
 
+The current version (1.0) is a prototype under-development that has been designed for a specific dataset of the Biology field. Consequently, it does not provide a big range of options and functionalities but the ones that were required. However, it can be easily extended.
 
+It is not currently optimized nor parallelized.
 
-This software is
 
 
 ## How to use ##
