@@ -1,3 +1,3 @@
 # data folder #
 
-Dataset and untrained network structure goes here
+Dataset and untrained network structure go here
