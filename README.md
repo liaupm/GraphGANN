@@ -25,6 +25,19 @@ It is not currently optimized nor parallelized.
 
 ## How to use ##
 
+The main dir contains an .exe file for Windows 10. It also contains a makefile for compiling for other operative systems.
+
+This is an standalone console application with no command line args. The "options.txt" file contains all the values for the parameters and options. 8 different programs can be run, including training nets, using trained nets for prediction, cross-validation, dataset management...(more info in the "options.txt" file).
+
+As input files, it requires a "net.tex" file with the custom structure of the network in the shape of propositions and a "dataset.txt" fiel with the data in csv format. Currently, only binary classification problems with a single output are allowed. The inputs can be either binary or numeric while some functionalities may not work for numeric ones.
+
+
+
+
+
+
+
+
 
 
 
