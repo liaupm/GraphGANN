@@ -1,0 +1,95 @@
+RIPK1	CASP8_10
+espL	NOT	RIPK1
+nleA	NOT	vesicle_trafficking
+RhoA	Actin_rearrangement
+vesicle_trafficking	NOT	Colonization
+GSDMD	Cyt_release
+espK	Colonization
+nleF	NOT	vesicle_trafficking
+MAPKs	Proinflammatory_cytokines
+A_E_lesions	NOT	vesicle_trafficking
+nleF	NOT	GSDMD
+nleB	NOT	CASP8_10
+espG	NOT	cdc42
+espN	Colonization
+RIPK1	RIPK3
+CASP8_10	NOT	RIPK3
+CASP8_10	CASP3_6_7
+Antimicrobial_peptides	NOT	Colonization
+espH	NOT	cdc42
+nleF	NOT	CASP9
+espL	NOT	RIPK3
+nleO	NOT	cdc42
+nleB	NOT	RIPK1
+nleG7	Ubiquitin_modifications
+CASP9	CASP3_6_7
+Actin_rearrangement	vesicle_trafficking
+TRIF	NOT	Colonization
+MOMP	CytC_release
+TABs_TAK1	NFkB
+espL	NOT	TRIF
+espF	NOT	Actin_rearrangement
+nleA	NOT	GSDMD
+TRIF	TRAFs
+espO	Antimicrobial_peptides
+tir	NFkB
+nleD	NOT	MAPKs
+CASP3_6_7	NOT	Colonization
+nleB	NOT	TRADD
+espH	NOT	RhoA
+nleG1	Ubiquitin_modifications
+espO	Nutritional_immunity
+espG	NOT	RhoA
+nleF	NFkB
+espH	NOT	Rac1
+nleE	NOT	TABs_TAK1
+espS	NOT	Colonic_crypt_hyperplasia
+nleF	NOT	CASP8_10
+RIPK3	NOT	Colonization
+Ubiquitin_modifications	Colonization
+espM	RhoA
+nleH	NOT	MOMP
+TRADD	RIPK1
+espF	CASP3_6_7
+nleC	NOT	NFkB
+nleK	Colonization
+Actin_rearrangement	A_E_lesions
+cdc42	Actin_rearrangement
+espV	Actin_rearrangement
+A_E_lesions	Colonization
+CytC_release	CASP9
+nleN	Colonization
+RIPK1	TABs_TAK1
+TRAFs	RIPK1
+espT	Rac1
+nleL	NOT	MAPKs
+Nucleolus_dissasembly	Colonization
+nleH	NOT	NFkB
+Nutritional_immunity	NOT	Colonization
+TRADD	TRAFs
+espF	A_E_lesions
+map	CytC_release
+tir	?	GSDMD
+nleO	NOT	Rac1
+espJ	NOT	Actin_rearrangement
+TABs_TAK1	MAPKs
+Cyt_release	NOT	Colonization
+map	cdc42
+nleO	NOT	RhoA
+NFkB	Proinflammatory_cytokines
+espZ	NOT	CASP9
+espF	CytC_release
+espG	NOT	vesicle_trafficking
+espT	cdc42
+Rac1	TABs_TAK1
+espF	Nucleolus_dissasembly
+tir	NOT	TRAFs
+espF	Colonic_crypt_hyperplasia
+espH	A_E_lesions
+tir	A_E_lesions
+CASP8_10	MOMP
+nleG8	Ubiquitin_modifications
+Proinflammatory_cytokines	NOT	Colonization
+GSDMD	NOT	Colonization
+nleA	NOT	Cyt_release
+Colonic_crypt_hyperplasia	Colonization
